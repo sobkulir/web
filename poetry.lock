@@ -332,7 +332,7 @@ Django = ">=2.0"
 diff-match-patch = "*"
 
 [package.dependencies.tablib]
-extras = ["html", "yaml", "xls", "xlsx", "ods"]
+extras = ["html", "xls", "xlsx", "yaml", "ods"]
 version = ">=0.14.0"
 
 [[package]]
@@ -870,6 +870,14 @@ six = ">=1.5"
 
 [[package]]
 category = "main"
+description = "File type identification using libmagic"
+name = "python-magic"
+optional = false
+python-versions = "*"
+version = "0.4.15"
+
+[[package]]
+category = "main"
 description = "OpenID support for modern servers and consumers."
 marker = "python_version >= \"3.0\""
 name = "python3-openid"
@@ -1176,7 +1184,7 @@ docs = ["sphinx", "jaraco.packaging (>=3.2)", "rst.linker (>=1.9)"]
 testing = ["pathlib2", "unittest2", "jaraco.itertools", "func-timeout"]
 
 [metadata]
-content-hash = "7db8dffab645eea07a31915195109347d396e6dda0da98a84bdaf05bd1b1559e"
+content-hash = "469db4baca7d41b7235d7dd1a077ac3749c37e4c7df3d390e5fe44b726e4f6c9"
 python-versions = "^3.5"
 
 [metadata.files]
@@ -1531,6 +1539,10 @@ python-akismet = [
 python-dateutil = [
     {file = "python-dateutil-2.8.1.tar.gz", hash = "sha256:73ebfe9dbf22e832286dafa60473e4cd239f8592f699aa5adaf10050e6e1823c"},
     {file = "python_dateutil-2.8.1-py2.py3-none-any.whl", hash = "sha256:75bb3f31ea686f1197762692a9ee6a7550b59fc6ca3a1f4b5d7e32fb98e2da2a"},
+]
+python-magic = [
+    {file = "python-magic-0.4.15.tar.gz", hash = "sha256:f3765c0f582d2dfc72c15f3b5a82aecfae9498bd29ca840d72f37d7bd38bfcd5"},
+    {file = "python_magic-0.4.15-py2.py3-none-any.whl", hash = "sha256:f2674dcfad52ae6c49d4803fa027809540b130db1dec928cfbb9240316831375"},
 ]
 python3-openid = [
     {file = "python3-openid-3.1.0.tar.gz", hash = "sha256:628d365d687e12da12d02c6691170f4451db28d6d68d050007e4a40065868502"},
