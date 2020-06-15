@@ -71,7 +71,7 @@ def edit_review(filecontent, filename, submit, user, points, comment=""):
 def get_latest_submits_for_task(task):
     description_submits = (
         task.submit_set.filter(
-            submit_type=submit_constants.SUBMIT_TYPE_DESCRIPTION, time__lt=task.round.end_time
+            submit_type=submit_constants.SUBMIT_TYPE_DESCRIPTION, time__lte=task.round.end_time
         )
         .exclude(testing_status=submit_constants.SUBMIT_STATUS_REVIEWED)
         .select_related("user")
@@ -79,7 +79,7 @@ def get_latest_submits_for_task(task):
 
     source_submits = (
         task.submit_set.filter(
-            submit_type=submit_constants.SUBMIT_TYPE_SOURCE, time__lt=task.round.end_time
+            submit_type=submit_constants.SUBMIT_TYPE_SOURCE, time__lte=task.round.end_time
         )
         .exclude(testing_status=submit_constants.SUBMIT_STATUS_REVIEWED)
         .select_related("user")
@@ -133,12 +133,9 @@ def submit_directory(submit, order=0):
 
 
 def submit_download_filename(submit, order=0):
-    return "%03d_%s_%s/%s" % (
-        order,
-        unidecode(submit.user.get_full_name().lower().replace(" ", "_")),
-        submit.pk,
-        submit.filename.split("-", 2)[-1],
-    )
+    _, extension = os.path.splitext(os.path.basename(submit.filepath))
+    name = unidecode(submit.user.get_full_name().lower().replace(" ", "_"))
+    return "%03d_%s_%s/%s%s" % (order, name, submit.pk, name, extension)
 
 
 def submit_source_download_filename(submit, description_submit_id, order=0):
